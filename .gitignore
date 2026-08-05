@@ -11,6 +11,10 @@
 /resources/js/routes
 /resources/js/wayfinder
 /vendor
+# Database dumps carry credentials and session data. Only the curated,
+# content-only dump under database/dumps is allowed into the repository.
+*.sql
+!/database/dumps/*.sql
 .DS_Store
 .env
 .env.backup
