@@ -432,6 +432,16 @@ class PortfolioSeeder extends Seeder
                 ],
                 'featured' => true,
             ],
+            [
+                'name' => 'PathLingo',
+                'description' => 'JLPT vocabulary learning platform built in my own time — a Laravel admin and content backend serving a versioned REST API, plus a native Android client. Covers vocabulary, kanji with stroke order, and kana, with generated pronunciation audio, quizzes, and progress tracking. Gamified with coins, unlockable categories, and purchasable avatars. Token auth for mobile and session auth for the admin panel, with Google and Facebook sign-in, OTP, and a guest mode.',
+                'category' => 'Web Platform & Mobile',
+                'tech' => ['Laravel', 'PHP', 'Alpine.js', 'Tailwind CSS', 'Sanctum', 'REST APIs', 'Swagger', 'Java', 'Android', 'MySQL'],
+                'links' => [
+                    ['label' => 'Website', 'url' => 'https://pathlingo.scholarlyapps.com/'],
+                ],
+                'featured' => true,
+            ],
         ];
 
         foreach ($projects as $order => $project) {
