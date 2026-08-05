@@ -1,0 +1,311 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@import 'boxicons/css/boxicons.min.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.87 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.87 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.269 0 0);
+    --ring: oklch(0.439 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.985 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0 0);
+    --sidebar-ring: oklch(0.439 0 0);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* ==========================================================================
+   Public portfolio — "engineering dossier"
+   A warm-paper editorial surface with ink navy type, hairline rules and a
+   single vermillion accent. Deliberately light-only and fully self-contained
+   so the admin panel's shadcn theming (including dark mode) is untouched.
+   ========================================================================== */
+
+.pf-root {
+    --pf-paper: #fbfaf7;
+    --pf-paper-alt: #f4f2ec;
+    --pf-ink: #16202c;
+    --pf-ink-soft: #4c5866;
+    --pf-ink-faint: #8b95a1;
+    --pf-rule: #e0dbd1;
+    --pf-rule-strong: #cbc4b7;
+    --pf-seal: #bf4229;
+    --pf-seal-tint: #f6e7e2;
+
+    --pf-display: 'Instrument Serif', ui-serif, Georgia, serif;
+    --pf-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+    background-color: var(--pf-paper);
+    color: var(--pf-ink);
+    color-scheme: light;
+    font-feature-settings: 'kern' 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Keep the paper colour behind overscroll even when the OS prefers dark. */
+html:has(.pf-root) {
+    background-color: #fbfaf7 !important;
+}
+
+html:has(.pf-root) body {
+    background-color: #fbfaf7;
+    color: #16202c;
+}
+
+.pf-display {
+    font-family: var(--pf-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+}
+
+.pf-mono {
+    font-family: var(--pf-mono);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.pf-rule {
+    border-color: var(--pf-rule);
+}
+
+/*
+   Justified body copy. Hyphenation is essential here: the project and skill
+   cards are narrow columns, and justifying them without it opens rivers of
+   whitespace between words. Applied only to prose — justifying the large
+   serif headings would stretch a handful of words across the full measure.
+*/
+.pf-justify {
+    text-align: justify;
+    text-justify: inter-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Fine dot grid used behind the hero for a drafting-paper feel. */
+.pf-grid-bg {
+    background-image: radial-gradient(
+        circle at 1px 1px,
+        var(--pf-rule-strong) 1px,
+        transparent 0
+    );
+    background-size: 26px 26px;
+}
+
+/* Hanko-inspired seal used as the avatar fallback. */
+.pf-seal-mark {
+    font-family: var(--pf-display);
+    color: var(--pf-seal);
+    border: 2px solid var(--pf-seal);
+    background-color: var(--pf-seal-tint);
+}
+
+/* Scroll reveal — staggered fade-up, disabled for reduced-motion users. */
+.pf-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+        transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+    transition-delay: var(--pf-reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.pf-reveal.pf-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pf-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* Underline-style form fields, in keeping with the printed-form metaphor. */
+.pf-field {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--pf-rule-strong);
+    color: var(--pf-ink);
+    padding: 0.6rem 0.125rem;
+    width: 100%;
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.pf-field::placeholder {
+    color: var(--pf-ink-faint);
+}
+
+.pf-field:focus {
+    outline: none;
+    border-bottom-color: var(--pf-seal);
+    box-shadow: 0 1px 0 0 var(--pf-seal);
+}
+
+.pf-field[aria-invalid='true'] {
+    border-bottom-color: var(--pf-seal);
+}
+
+.pf-root ::selection {
+    background-color: var(--pf-seal);
+    color: var(--pf-paper);
+}
+
+.pf-root :focus-visible {
+    outline: 2px solid var(--pf-seal);
+    outline-offset: 3px;
+}
+
+.pf-link-underline {
+    background-image: linear-gradient(var(--pf-seal), var(--pf-seal));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0 1px;
+    transition: background-size 0.3s ease;
+}
+
+.pf-link-underline:hover {
+    background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pf-link-underline {
+        transition: none;
+    }
+}

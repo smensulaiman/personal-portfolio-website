@@ -1,0 +1,26 @@
+<?php
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\Teams\TeamInvitationController;
+use App\Http\Middleware\EnsureTeamMembership;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', PortfolioController::class)->name('home');
+
+// Registered before the team routes below: `{current_team}` is a wildcard that
+// would otherwise match `/admin/...` and fail team membership with a 403.
+require __DIR__.'/admin.php';
+
+Route::prefix('{current_team}')
+    ->middleware(['auth', 'verified', EnsureTeamMembership::class])
+    ->group(function () {
+        Route::get('dashboard', DashboardController::class)->name('dashboard');
+    });
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('invitations/{invitation}/accept', [TeamInvitationController::class, 'accept'])->name('invitations.accept');
+    Route::delete('invitations/{invitation}', [TeamInvitationController::class, 'decline'])->name('invitations.decline');
+});
+
+require __DIR__.'/settings.php';
