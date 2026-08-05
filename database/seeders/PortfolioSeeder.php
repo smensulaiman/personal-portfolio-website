@@ -48,8 +48,9 @@ class PortfolioSeeder extends Seeder
 
     private function seedSkills(): void
     {
-        // Boxicons has no Ubuntu or Cloudflare logo, so those fall back to the
-        // closest available marks: the Linux penguin and a shield.
+        // Boxicons has no Ubuntu, Cloudflare or Redis logo, so those fall back
+        // to the closest available marks: the Linux penguin, a shield, and a
+        // memory card for Redis' in-memory store.
         $categories = [
             [
                 'name' => 'AI-Driven Development',
@@ -69,6 +70,7 @@ class PortfolioSeeder extends Seeder
                     ['PHP', 'bx bxl-php'],
                     ['JavaScript', 'bx bxl-javascript'],
                     ['C#', 'bx bx-code-alt'],
+                    ['Python', 'bx bxl-python'],
                 ],
             ],
             [
@@ -78,6 +80,7 @@ class PortfolioSeeder extends Seeder
                     ['Laravel', 'bx bx-layer'],
                     ['Livewire', 'bx bx-bolt-circle'],
                     ['Spring Boot', 'bx bxl-spring-boot'],
+                    ['Node.js', 'bx bxl-nodejs'],
                     ['REST APIs', 'bx bx-transfer-alt'],
                     ['MVC', 'bx bx-network-chart'],
                 ],
@@ -107,6 +110,7 @@ class PortfolioSeeder extends Seeder
                 'icon_class' => 'bx bx-data',
                 'skills' => [
                     ['MySQL', 'bx bx-data'],
+                    ['Redis', 'bx bx-memory-card'],
                     ['Firebase', 'bx bxl-firebase'],
                     ['Room', 'bx bx-box'],
                     ['Realm', 'bx bx-cube'],
