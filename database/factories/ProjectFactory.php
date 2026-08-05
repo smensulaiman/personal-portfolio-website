@@ -37,4 +37,14 @@ class ProjectFactory extends Factory
             'featured' => true,
         ]);
     }
+
+    /**
+     * Indicate that the project has nothing to link out to.
+     */
+    public function withoutLinks(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'links' => [],
+        ]);
+    }
 }

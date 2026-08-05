@@ -69,7 +69,7 @@ export default function AdminProjects({ projects }: Props) {
                 <div className="flex flex-wrap items-start justify-between gap-4">
                     <Heading
                         title="Projects"
-                        description="Drag the handle to reorder — this is the exact order shown on the landing page."
+                        description="Drag the handle to reorder. Projects with a link always come first on the landing page — dragging sorts within that grouping."
                     />
 
                     <Button asChild>

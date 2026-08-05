@@ -32,16 +32,27 @@ class Project extends Model
     use HasFactory;
 
     /**
-     * Order projects the way they should be displayed. `sort_order` alone is
-     * authoritative so that the drag-and-drop sequence in the admin matches
-     * the public grid exactly; `featured` must not float rows out of place.
+     * Order projects the way they should be displayed. Projects with at least
+     * one link lead, since a visitor can actually go and look at those; within
+     * each group `sort_order` — the admin drag-and-drop sequence — decides.
+     * `featured` must not float rows out of place.
+     *
+     * The admin list uses this same scope, so what is dragged there is what
+     * the public grid shows.
      *
      * @param  Builder<$this>  $query
      */
     #[Scope]
     protected function ordered(Builder $query): void
     {
-        $query->orderBy('sort_order')->orderBy('id');
+        // `links` is a JSON array; the length function for it is driver-specific.
+        $length = $query->getModel()->getConnection()->getDriverName() === 'sqlite'
+            ? 'json_array_length(links)'
+            : 'json_length(links)';
+
+        $query->orderByRaw("{$length} = 0")
+            ->orderBy('sort_order')
+            ->orderBy('id');
     }
 
     /**

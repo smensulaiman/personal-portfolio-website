@@ -67,6 +67,28 @@ class PortfolioTest extends TestCase
         $this->assertSame('Google Play', $project->fresh()->links[0]['label']);
     }
 
+    public function test_projects_with_links_are_listed_before_projects_without()
+    {
+        Project::factory()->withoutLinks()->create(['name' => 'No link', 'sort_order' => 0]);
+        Project::factory()->create(['name' => 'Has link', 'sort_order' => 9]);
+
+        $this->get('/')->assertInertia(fn (Assert $page) => $page
+            ->where('projects.0.name', 'Has link')
+            ->where('projects.1.name', 'No link'),
+        );
+    }
+
+    public function test_sort_order_still_decides_among_projects_that_all_have_links()
+    {
+        Project::factory()->create(['name' => 'Second', 'sort_order' => 1]);
+        Project::factory()->create(['name' => 'First', 'sort_order' => 0]);
+
+        $this->get('/')->assertInertia(fn (Assert $page) => $page
+            ->where('projects.0.name', 'First')
+            ->where('projects.1.name', 'Second'),
+        );
+    }
+
     public function test_experiences_are_ordered_by_sort_order()
     {
         Experience::factory()->create(['company' => 'Second', 'sort_order' => 1]);
